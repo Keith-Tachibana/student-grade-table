@@ -4,6 +4,6 @@ class PageHeader {
   }
   updateAverage(newAverage) {
     let badge = document.querySelector('#badge-avg');
-    badge.textContent = newAverage;
+    badge.textContent = newAverage.toFixed(2);
   }
 }
