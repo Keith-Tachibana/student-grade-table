@@ -16,6 +16,7 @@ class App {
     console.error(error);
   }
   handleGetGradesSuccess(grades) {
+    console.log(grades);
     this.gradeTable.updateGrades(grades);
     let result = 0;
     for (let i = 0; i < grades.length; i++) {

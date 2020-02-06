@@ -17,8 +17,7 @@ class GradeTable {
       tr.appendChild(td1);
       tr.appendChild(td2);
       tr.appendChild(td3);
-      this.tableElement.appendChild(tr);
-      this.renderGradeRow(grades, this.deleteGrade);
+      tbody.appendChild(tr);
     }
   }
   onDeleteClick(deleteGrade) {
@@ -31,19 +30,21 @@ class GradeTable {
     let td3 = document.createElement('td');
     let td4 = document.createElement('td');
     let button = document.createElement('button');
+    let i = 0;
     button.classList.add('btn', 'btn-danger');
     button.textContent = "DELETE";
-    td1.textContent = data.name;
-    td2.textContent = data.course;
-    td3.textContent = data.grade;
+    td1.textContent = data[i].name;
+    td2.textContent = data[i].course;
+    td3.textContent = data[i].grade;
     td4.appendChild(button);
     tr.appendChild(td1);
     tr.appendChild(td2);
-    tr.appendChild(td2);
+    tr.appendChild(td3);
     tr.appendChild(td4);
     button.addEventListener('click', function() {
-      deleteGrade(data.id);
+      deleteGrade(data[i].id);
     });
     this.tableElement.appendChild(tr);
+    console.log(data);
   }
 }
