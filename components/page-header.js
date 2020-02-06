@@ -4,6 +4,10 @@ class PageHeader {
   }
   updateAverage(newAverage) {
     let badge = document.querySelector('#badge-avg');
-    badge.textContent = newAverage;
+    if (isNaN(newAverage)) {
+      badge.textContent = 0;
+    } else {
+      badge.textContent = newAverage.toFixed(2);
+    }
   }
 }
