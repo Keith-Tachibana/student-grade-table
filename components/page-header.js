@@ -5,7 +5,7 @@ class PageHeader {
   updateAverage(newAverage) {
     let badge = document.querySelector('#badge-avg');
     if (isNaN(newAverage)) {
-      badge.textContent = 0;
+      badge.textContent = 'N/A';
     } else {
       badge.textContent = newAverage.toFixed(2);
     }
