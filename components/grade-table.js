@@ -3,6 +3,7 @@ class GradeTable {
     this.tableElement = tableElement;
     this.noGradesElement = noGradesElement;
     this.deleteGrade = null;
+    this.changeFormMode = null;
   }
   updateGrades(grades) {
     $('tbody').html('');
@@ -25,6 +26,9 @@ class GradeTable {
   }
   onDeleteClick(deleteGrade) {
     this.deleteGrade = deleteGrade;
+  }
+  onEditClick(changeFormMode) {
+    this.changeFormMode = changeFormMode;
   }
   renderGradeRow(data, deleteGrade) {
     let tr = document.createElement('tr');
@@ -50,6 +54,15 @@ class GradeTable {
     deleteButton.addEventListener('click', function() {
       deleteGrade(data.id);
     });
+    editButton.addEventListener('click', function() {
+      this.changeFormMode(true);
+      $('#form-title').text('Update Grade');
+      $('#add-button').text('Update');
+      $('form').attr("updatingID", data.id);
+      $('#name').val(data.name);
+      $('#course').val(data.course);
+      $('#grade').val(data.grade);
+    }.bind(this));
     this.tableElement.appendChild(tr);
   }
 }
