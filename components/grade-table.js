@@ -5,8 +5,7 @@ class GradeTable {
     this.deleteGrade = null;
   }
   updateGrades(grades) {
-    let tbody = document.querySelector('tbody');
-    tbody.innerHTML = '';
+    $('tbody').html('');
     for (let i = 0; i < grades.length; i++) {
       this.renderGradeRow(grades[i], this.deleteGrade);
     }
@@ -17,7 +16,10 @@ class GradeTable {
         'font-weight': 'bold'
       });
     } else {
-      noGrades.style.cssText = '';
+      $('#no-grades').css({
+        'font-size': '',
+        'font-weight': ''
+      });
       $('#no-grades').addClass('d-none');
     }
   }
