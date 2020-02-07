@@ -6,24 +6,25 @@ class GradeTable {
   }
   updateGrades(grades) {
     let tbody = document.querySelector('tbody');
-    let noGrades = document.querySelector('#no-grades');
     tbody.innerHTML = '';
     for (let i = 0; i < grades.length; i++) {
       this.renderGradeRow(grades[i], this.deleteGrade);
     }
     if (grades.length === 0) {
-      noGrades.classList.remove('d-none');
-      noGrades.style.cssText = "font-size: 2rem; font-weight: bold;";
+      $('#no-grades').removeClass('d-none');
+      $('#no-grades').css({
+        'font-size': '2rem',
+        'font-weight': 'bold'
+      });
     } else {
       noGrades.style.cssText = '';
-      noGrades.classList.add('d-none');
+      $('#no-grades').addClass('d-none');
     }
   }
   onDeleteClick(deleteGrade) {
     this.deleteGrade = deleteGrade;
   }
   renderGradeRow(data, deleteGrade) {
-    const addButton = document.querySelector('#add-button');
     let tr = document.createElement('tr');
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
@@ -47,9 +48,6 @@ class GradeTable {
     deleteButton.addEventListener('click', function() {
       deleteGrade(data.id);
     });
-    editButton.addEventListener('click', function() {
-      addButton.textContent = 'Update';
-    })
     this.tableElement.appendChild(tr);
   }
 }
