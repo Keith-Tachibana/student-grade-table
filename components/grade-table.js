@@ -2,6 +2,7 @@ class GradeTable {
   constructor(tableElement, noGradesElement) {
     this.tableElement = tableElement;
     this.noGradesElement = noGradesElement;
+    this.deleteGrade = null;
   }
   updateGrades(grades) {
     let tbody = document.querySelector('tbody');
@@ -22,29 +23,33 @@ class GradeTable {
     this.deleteGrade = deleteGrade;
   }
   renderGradeRow(data, deleteGrade) {
+    const addButton = document.querySelector('#add-button');
     let tr = document.createElement('tr');
     let td1 = document.createElement('td');
     let td2 = document.createElement('td');
     let td3 = document.createElement('td');
     let td4 = document.createElement('td');
-    let button1 = document.createElement('button');
-    let button2 = document.createElement('button');
-    button1.classList.add('btn', 'btn-danger', 'float-right');
-    button1.innerHTML = '<i class="fas fa-trash-alt"></i>';
-    button2.classList.add('btn', 'btn-primary', 'mr-4', 'float-right');
-    button2.innerHTML = '<i class="fas fa-edit"></i>';
+    let deleteButton = document.createElement('button');
+    let editButton = document.createElement('button');
+    deleteButton.classList.add('btn', 'btn-danger', 'float-right');
+    deleteButton.innerHTML = 'Delete <i class="fas fa-trash-alt"></i>';
+    editButton.classList.add('btn', 'btn-primary', 'mr-4', 'float-right');
+    editButton.innerHTML = 'Edit <i class="fas fa-edit"></i>';
     td1.textContent = data.name;
     td2.textContent = data.course;
     td3.textContent = data.grade;
-    td4.appendChild(button1);
-    td4.appendChild(button2);
+    td4.appendChild(deleteButton);
+    td4.appendChild(editButton);
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
     tr.appendChild(td4);
-    button1.addEventListener('click', function() {
+    deleteButton.addEventListener('click', function() {
       deleteGrade(data.id);
     });
+    editButton.addEventListener('click', function() {
+      addButton.textContent = 'Update';
+    })
     this.tableElement.appendChild(tr);
   }
 }
