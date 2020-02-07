@@ -3,11 +3,10 @@ class PageHeader {
     this.headerElement = headerElement;
   }
   updateAverage(newAverage) {
-    let badge = document.querySelector('#badge-avg');
     if (isNaN(newAverage)) {
-      badge.textContent = 0;
+      $('#badge-avg').text('N/A');
     } else {
-      badge.textContent = newAverage.toFixed(2);
+      $('#badge-avg').text(newAverage.toFixed(2));
     }
   }
 }
