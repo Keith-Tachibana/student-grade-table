@@ -13,7 +13,6 @@ class GradeForm {
   }
   changeFormMode(newUpdate) {
     this.updating = newUpdate;
-    return newUpdate;
   }
   onUpdateClick(updateGrade) {
     this.updateGrade = updateGrade;

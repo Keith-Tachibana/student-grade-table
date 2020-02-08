@@ -38,10 +38,11 @@ class GradeTable {
     let td4 = document.createElement('td');
     let deleteButton = document.createElement('button');
     let editButton = document.createElement('button');
+    const cancelButton = document.querySelector('#cancel-button');
     deleteButton.classList.add('btn', 'btn-danger', 'float-right');
-    deleteButton.innerHTML = 'Delete <i class="fas fa-trash-alt"></i>';
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"> Delete</i>';
     editButton.classList.add('btn', 'btn-primary', 'mr-4', 'float-right');
-    editButton.innerHTML = 'Edit <i class="fas fa-edit"></i>';
+    editButton.innerHTML = '<i class="fas fa-edit"> Edit</i>';
     td1.textContent = data.name;
     td2.textContent = data.course;
     td3.textContent = data.grade;
@@ -63,6 +64,10 @@ class GradeTable {
       $('#course').val(data.course);
       $('#grade').val(data.grade);
     }.bind(this));
+    cancelButton.addEventListener('click', function() {
+      $('#form-title').text('Add Grade');
+      $('#add-button').text('Add');
+    });
     this.tableElement.appendChild(tr);
   }
 }

@@ -1,8 +1,9 @@
 class App {
-  constructor(gradeTable, pageHeader, gradeForm) {
+  constructor(gradeTable, pageHeader, gradeForm, cache) {
     this.gradeTable = gradeTable;
     this.pageHeader = pageHeader;
     this.gradeForm = gradeForm;
+    this.cache = cache;
     this.currentUpdatingId = null;
     this.handleGetGradesError = this.handleGetGradesError.bind(this);
     this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
@@ -54,8 +55,11 @@ class App {
   handleCreateGradeError(error) {
     console.error(error);
   }
-  handleCreateGradeSuccess() {
-    this.getGrades();
+  handleCreateGradeSuccess(data) {
+    //this.getGrades();
+    this.cache = [];
+    this.cache.push(data);
+    console.log(this.cache[0].id);
   }
   deleteGrade(id) {
     $.ajax({
